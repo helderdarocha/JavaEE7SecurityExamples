@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>Grande baile</title>
+        <style>
+            * {font-family: helvetica}
+        <h:panelGroup rendered="#{request.isUserInRole('amigo')}">
+                body {background: pink}
+        </h:panelGroup>
+        <h:panelGroup rendered="#{request.isUserInRole('administrador')}">
+                body {background: black; color: yellow}
+        </h:panelGroup>
+        </style>
+    </h:head>
+    <h:body>
+        <h1>Baile secreto no Castelo: Servlet /secreto</h1>
+        <p>Seja bem-vindo</p>
+        <p>Todos os administradores e amigos estão convidados! Se você ainda não é um amigo, cadastre-se!</p>
+
+        <table border="1">
+            <tr><td>request.secure</td><th>#{request.secure}</th></tr>
+            <tr><td>request.authType</td><th>#{request.authType}</th></tr>
+            <tr><td>request.userPrincipal</td><th>#{request.userPrincipal}</th></tr>
+            <tr><td>request.remoteUser</td><th>#{request.remoteUser}</th></tr>
+            <tr><td>request.isUserInRole('administrador')</td><th>#{request.isUserInRole('administrador')}</th></tr>
+            <tr><td>request.isUserInRole('especial')</td><th>#{request.isUserInRole('especial')}</th></tr>
+            <tr><td>request.isUserInRole('amigo')</td><th>#{request.isUserInRole('amigo')}</th></tr>
+            <tr><td>request.isUserInRole('outro')</td><th>#{request.isUserInRole('outro')}</th></tr>
+        </table>
+
+    </h:body>
+</html>
+

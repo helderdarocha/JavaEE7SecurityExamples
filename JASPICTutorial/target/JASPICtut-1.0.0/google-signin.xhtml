@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>JASPIC tutorial</title>
+        <meta charset="UTF-8" />
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+        <!-- GOOGLE Sign-In Script -->
+        <script src="https://apis.google.com/js/platform.js"></script>
+        <!-- INCLUDE YOUR GOOGLE CLIENT ID IN /WEB-INF/auth.properties -->
+        <meta name="google-signin-client_id" content="#{authconfig.googleClientID}"/>
+
+        <script>
+            $(document).ready(function () {
+                renderGoogleButton();
+            });
+        </script>
+        <style>
+            * {
+                font-family: corbel, sans-serif;
+            }
+        </style>
+
+    </h:head>
+    <h:body>
+        <h:form>
+            <h1>JASPIC Google SignIn</h1>
+            <div id="signin-button" data-onsuccess="googleSignIn()"></div>
+
+            <p>User: <span id="user">not logged in</span></p>
+            <div id="user-data"></div>
+            <p>Is in role "remote-user":  <span id="remote-user-role">not logged in</span>
+                <br/>Is in role "privileged-user":  <span id="privileged-user-role">not logged in</span>
+                <br/>Is in role "**":  <span id="all-role">not logged in</span></p>
+
+            <p><h:commandLink value="Visit protected page" action="privileged.xhtml"/></p>
+
+            <a href="#" onclick="googleSignOut()">Google Signout</a>
+        </h:form>
+
+        <!-- Local scripts -->
+        <script src="js/google-signin.js"></script>
+    </h:body>
+
+</html>
+

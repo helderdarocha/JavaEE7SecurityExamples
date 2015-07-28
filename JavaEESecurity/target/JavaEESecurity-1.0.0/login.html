@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>JASPIC tutorial</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <!-- GOOGLE Sign-In -->
+        <script src="https://apis.google.com/js/platform.js"></script>
+        <!--<meta name="google-signin-client_id" content="YOUR_CLIENT_ID.apps.googleusercontent.com"/>-->
+        <meta name="google-signin-client_id" 
+              content="856079475824-2lnb8mlutct1bgu3jlghp1tfajb8pra3.apps.googleusercontent.com"/>
+        <script src="js/oauth.js"></script>
+        <script>
+            $(document).ready(function () {
+                renderButton();
+            });
+        </script>
+
+    </head>
+    <body>
+        <h1>Autenticação com Google Sign-In e JASPIC</h1>
+
+        <div id="signin-button" data-onsuccess="onSignIn"></div>
+        <div style="margin-top: 10px"/>
+
+        <p>Usuário: <span id="user">não logado</span></p>
+
+        <a href="#" onclick="signOut();">Sign out</a>
+    </body>
+</html>

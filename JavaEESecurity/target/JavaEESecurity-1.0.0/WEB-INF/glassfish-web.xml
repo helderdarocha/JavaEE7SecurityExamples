@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glassfish-web-app PUBLIC "-//GlassFish.org//DTD GlassFish Application Server 3.1 Servlet 3.0//EN" "http://glassfish.org/dtds/glassfish-web-app_3_0-1.dtd">
+<glassfish-web-app><!-- httpservlet-security-provider="GoogleSignInProvider">-->
+    <context-root>JavaEESecurity</context-root>
+  
+    <security-role-mapping>
+        <role-name>administrador</role-name>
+        
+        <principal-name>cerebro</principal-name>
+        <principal-name>CN=Helder da Rocha, OU=Argonavis, O=Argonavis, L=Sao Paulo, ST=SP, C=BR</principal-name>
+        <group-name>alienigenas</group-name>
+    </security-role-mapping>
+  
+    <security-role-mapping>
+        <role-name>especial</role-name>
+        
+        <principal-name>vini</principal-name>
+        <principal-name>masha</principal-name>
+    </security-role-mapping>
+  
+    <security-role-mapping>
+        <role-name>amigo</role-name>
+        
+        <principal-name>masha</principal-name>
+        <principal-name>vini</principal-name>
+        <principal-name>niquel</principal-name>
+    </security-role-mapping>
+    
+    <security-role-mapping>
+        <role-name>outro</role-name>
+        
+        <principal-name>kusko</principal-name>
+    </security-role-mapping>
+  
+</glassfish-web-app>

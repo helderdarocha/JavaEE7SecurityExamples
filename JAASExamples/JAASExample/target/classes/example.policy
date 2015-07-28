@@ -1,0 +1,25 @@
+// Permissions required if running applications with the Security Manager
+
+// This will allow the AuthenticationExample to run its code
+grant codebase "file:JAASExample-1.0.0.jar" {
+      //permission java.security.AllPermission;
+       
+      permission java.util.PropertyPermission "*", "read,write";
+      permission javax.security.auth.AuthPermission "modifyPrincipals";
+      permission javax.security.auth.AuthPermission "createLoginContext.SimpleJaasConfig";
+      permission javax.security.auth.AuthPermission "doAsPrivileged";
+};
+
+// Only user faisca can read a property and open a file
+grant codebase "file:../../JAASExampleTestAction/target/JAASExampleTestAction-1.0.0.jar",
+               Principal br.com.argonavis.jaasexample.realm.VerySimplePrincipal "faisca" {
+   permission java.util.PropertyPermission "user.home", "read";
+   permission java.io.FilePermission "../pom.xml", "read";
+};
+
+// Only user fumaca can open an URL
+grant codebase "file:JAASExample-1.0.0.jar", 
+      Principal br.com.argonavis.jaasexample.realm.VerySimplePrincipal "fumaca" {
+     permission java.net.SocketPermission "www.example.com:80","connect,resolve";
+     permission java.net.URLPermission "http://www.example.com","GET";
+};

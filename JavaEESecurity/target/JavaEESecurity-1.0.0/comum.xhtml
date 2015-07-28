@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>Jardins do castelo</title>
+        <style>
+        <h:panelGroup rendered="#{request.isUserInRole('amigo')}">
+                body {background: lightgreen}
+        </h:panelGroup>
+        <h:panelGroup rendered="#{request.isUserInRole('especial')}">
+                body {background: green; color: yellow}
+        </h:panelGroup>
+        <h:panelGroup rendered="#{request.isUserInRole('administrador')}">
+                body {background: black; color: red}
+        </h:panelGroup>
+        </style>
+    </h:head>
+    <h:body>
+        <h1>Jardins do castelo: /faces/comum.xhtml</h1>
+        <p>Todos são bem-vindos aqui, alienígenas, ursos, lhamas, ratos e humanos!</p>
+
+        <table border="1">
+            <tr><td>request.secure</td><th>#{request.secure}</th></tr>
+            <tr><td>request.authType</td><th>#{request.authType}</th></tr>
+            <tr><td>request.userPrincipal</td><th>#{request.userPrincipal}</th></tr>
+            <tr><td>request.remoteUser</td><th>#{request.remoteUser}</th></tr>
+            <tr><td>request.isUserInRole('administrador')</td><th>#{request.isUserInRole('administrador')}</th></tr>
+            <tr><td>request.isUserInRole('especial')</td><th>#{request.isUserInRole('especial')}</th></tr>
+            <tr><td>request.isUserInRole('amigo')</td><th>#{request.isUserInRole('amigo')}</th></tr>
+            <tr><td>request.isUserInRole('outro')</td><th>#{request.isUserInRole('outro')}</th></tr>
+        </table>
+
+    </h:body>
+</html>
+

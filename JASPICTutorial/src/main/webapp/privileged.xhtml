@@ -1,0 +1,66 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Page with protected items</title>
+        <style>
+            .imagens img {
+                width: 200px;
+                margin: 5px;
+            }
+            .imagens div {
+                float: left; 
+                text-align: center; 
+                font-family: menlo, monospace;
+                font-size: 8pt;
+            }
+            .imagens {
+                width: 100%;
+                text-align: center;
+            }
+            .userData {
+                border: solid red 1px;
+                padding: 5px;
+                width: 200px;
+                text-align: center;
+            }
+            .userData img {width: 100px}
+            * {
+                font-family: corbel, sans-serif;
+            }
+            h1 {
+                text-align: center
+            }
+        </style>
+    </h:head>
+    <h:body><h:form>
+            <h1>Protected Area</h1>
+            <section>
+                <div class="identification">
+                    <p>Principal: #{request.userPrincipal.name}</p>
+                    <p>Is in role "remote-user":  #{request.isUserInRole("remote-user")}
+                        <br/>Is in role "local-user":  #{request.isUserInRole("privileged-user")}
+                        <br/>Is in role "**":  #{request.isUserInRole("**")}</p>
+                </div>
+                <div class="userData">
+                    <h:graphicImage url="#{userData.avatar}" alt="photo"/>
+                    <br/>#{userData.name}
+                    <br/>#{userData.email}
+                </div>
+            </section>
+            <h3>Images that #{userData.email?userData.email:"unauthenticated user"} is allowed to see</h3>
+            <div class="imagens">
+                <div><img src="images/#{protectedBean.image1}" alt="Image 1" />
+                    <br/>Free access to all</div>
+                <div><img src="images/#{protectedBean.image2}" alt="Image 2" />
+                    <br/>@RolesAllowed<br/>({"remote-user", "privileged-user"})</div>
+                <div><img src="images/#{protectedBean.image3}" alt="Image 3" />
+                    <br/>@RolesAllowed<br/>("privileged-user")</div>
+            </div>
+            <br style="clear: both"/>
+        </h:form>
+    </h:body>
+</html>
+

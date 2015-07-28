@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Lista de Usuários</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="js/jquery.min.js"></script>
+        <script src="js/castelo.js"></script>
+        <script>
+            $(document).ready(function() {
+                carregarUsuarios();
+            });
+        </script>
+        
+    </head>
+    <body>
+        <h1>Lista de usuários</h1>
+        <h3>/webapi/usuarios</h3>
+        
+        <p>A lista é um resource RESTful acessada via JQuery.</p>
+        
+        <table border="1" id="usuarios">
+            <thead><tr><td>id</td><td>userid</td><td>nome</td><td>senha</td></tr></thead>
+            <tbody><td colspan="100">Você não tem permissão para ver a lista de usuários<br/>
+                Roles que têm acesso: <code>administrador</code> e <code>especial</code></td></tr></tbody>
+        </table>
+    </body>
+</html>

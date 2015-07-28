@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<f:view xmlns:fb="https://www.facebook.com/2008/fbml"
+        xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <html xmlns="http://www.w3.org/1999/xhtml" 
+          xmlns:h="http://xmlns.jcp.org/jsf/html">
+        <h:head>
+            <title>JASPIC tutorial</title>
+            <meta charset="UTF-8" />
+            <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+            <script>
+                $(document).ready(function () {
+                    facebookInit('#{authconfig.facebookAppID}');
+                });
+            </script>
+            <style>
+                * {
+                    font-family: corbel, sans-serif;
+                }
+            </style>
+
+        </h:head>
+        <h:body>
+            <h:form>
+                <h1>JASPIC Facebook Connect</h1>
+                
+                <fb:login-button scope="public_profile,email" 
+                                 onlogin="checkLoginState();"></fb:login-button>
+
+                <div id="status">
+                </div>
+
+                <p>User: <span id="user">not logged in</span></p>
+                <div id="user-data"></div>
+                <p>Is in role "remote-user":  <span id="remote-user-role">not logged in</span>
+                    <br/>Is in role "privileged-user":  <span id="privileged-user-role">not logged in</span>
+                    <br/>Is in role "**":  <span id="all-role">not logged in</span></p>
+
+                <p><h:commandLink value="Visit protected page" action="privileged.xhtml"/></p>
+
+                <a href="#" onclick="facebookSignOut()">Facebook Signout</a>
+            </h:form>
+
+            <!-- Login service script -->
+            <script src="js/facebook-connect.js"></script>
+        </h:body>
+
+    </html>
+</f:view>
+

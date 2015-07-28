@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Biblioteca</title>
+        <style>
+            img {
+                width: 200px;
+                margin: 5px;
+            }
+            .imagens div {
+                float: left; 
+                text-align: center; 
+                font-family: menlo, monospace;
+                font-size: 8pt;
+            }
+            .imagens {
+                width: 100%;
+                text-align: center;
+            }
+        </style>
+    </h:head>
+    <h:body><h:form>
+            <h1>Biblioteca</h1>
+
+            <p>User: #{request.userPrincipal.name}</p>
+
+            <h3>Imagens disponíveis</h3>
+            <div class="imagens">
+                <div><img src="images/#{bibliotecaBean.imagem1}" alt="Imagem 1" />
+                    <br/>Acesso livre a todos os cadastrados</div>
+                <div><img src="images/#{bibliotecaBean.imagem2}" alt="Imagem 2" />
+                    <br/>@RolesAllowed<br/>({"administrador", "amigo"})</div>
+                <div><img src="images/#{bibliotecaBean.imagem3}" alt="Imagem 3" />
+                    <br/>@RolesAllowed<br/>("administrador")</div>
+            </div>
+            <br style="clear: both"/>
+
+            <h3>Imagens de usuários</h3>
+            <p>Escolha um usuário:</p>
+            <h:selectOneMenu value="#{bibliotecaBean.userid}" immediate="true">
+                    <f:ajax render="avatar" />
+                    <f:selectItems value="#{bibliotecaBean.usuarios}" var="u" itemValue="#{u.userid}" />
+            </h:selectOneMenu>
+            <div class="imagens">
+                <div><h:graphicImage id="avatar" url="images/#{bibliotecaBean.imagem4}" alt="Imagem do Usuário" />
+                    <br/>SessionContext.getCallerPrincipal()<br/>.getName().equals("#{request.userPrincipal}")
+                    <br/>ou <br/>ctx.isCallerInRole("administrador")</div>
+            </div>
+            <br style="clear: both"/>
+        </h:form></h:body>
+</html>
+

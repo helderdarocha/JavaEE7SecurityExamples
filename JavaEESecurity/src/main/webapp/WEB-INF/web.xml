@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
+    <context-param>
+        <param-name>javax.faces.PROJECT_STAGE</param-name>
+        <param-value>Development</param-value>
+    </context-param>
+    <servlet>
+        <servlet-name>Faces Servlet</servlet-name>
+        <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Faces Servlet</servlet-name>
+        <url-pattern>/faces/*</url-pattern>
+    </servlet-mapping>
+    <session-config>
+        <session-timeout>
+            30
+        </session-timeout>
+    </session-config>
+    <welcome-file-list>
+        <welcome-file>index.html</welcome-file>
+    </welcome-file-list>
+    
+    <error-page>
+        <error-code>403</error-code>
+        <location>/AcessoNegado</location>
+    </error-page>
+    
+    <!--
+    <login-config>
+        <auth-method>BASIC</auth-method>
+        <realm-name>jdbc-realm</realm-name>
+    </login-config>
+    -->
+    
+    <!--
+    <login-config>
+        <auth-method>DIGEST</auth-method>
+        <realm-name>jdbc-realm</realm-name>
+    </login-config>
+    -->
+    
+    <!--
+    <login-config>
+        <auth-method>CLIENT-CERT</auth-method>
+        <realm-name>certificate</realm-name>
+    </login-config>
+   -->
+    
+    <login-config>
+        <auth-method>FORM</auth-method>
+        <realm-name>jdbc-realm</realm-name>
+        <form-login-config>
+            <form-login-page>/faces/login.xhtml</form-login-page>
+            <form-error-page>/faces/login-error.xhtml</form-error-page>
+        </form-login-config>
+    </login-config>
+    
+    <security-role>
+        <role-name>especial</role-name>
+    </security-role>
+    <security-role>
+        <role-name>administrador</role-name>
+    </security-role>
+    <security-role>
+        <role-name>amigo</role-name>
+    </security-role>
+    <security-role>
+        <role-name>outro</role-name>
+    </security-role>
+
+    <deny-uncovered-http-methods/>
+    
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>Faces</web-resource-name>
+            <url-pattern>/faces/*</url-pattern>
+            <http-method>GET</http-method>
+            <http-method>POST</http-method>
+        </web-resource-collection>
+        <user-data-constraint>
+            <transport-guarantee>CONFIDENTIAL</transport-guarantee>
+        </user-data-constraint>
+    </security-constraint>
+    
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>Torre do Castelo</web-resource-name>
+            <url-pattern>/faces/castelo.xhtml</url-pattern>
+            <http-method>GET</http-method>
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>administrador</role-name>
+        </auth-constraint>
+        <user-data-constraint>
+            <transport-guarantee>CONFIDENTIAL</transport-guarantee>
+        </user-data-constraint>
+    </security-constraint>
+    
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>Salão Principal</web-resource-name>
+            <url-pattern>/faces/especial.xhtml</url-pattern>
+            <http-method>GET</http-method>
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>especial</role-name>
+            <role-name>administrador</role-name>
+        </auth-constraint>
+        <user-data-constraint>
+            <transport-guarantee>CONFIDENTIAL</transport-guarantee>
+        </user-data-constraint>
+    </security-constraint>
+
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>Resource usuario (REST)</web-resource-name>
+            <url-pattern>/webapi/usuario</url-pattern>
+            <http-method>GET</http-method>
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>administrador</role-name>
+            <role-name>especial</role-name>
+        </auth-constraint>
+        <user-data-constraint>
+            <transport-guarantee>CONFIDENTIAL</transport-guarantee>
+        </user-data-constraint>
+    </security-constraint>
+    
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>Lista de usuários</web-resource-name>
+            <url-pattern>/usuarios.html</url-pattern>
+            <http-method>GET</http-method>
+        </web-resource-collection>
+        <user-data-constraint>
+            <transport-guarantee>CONFIDENTIAL</transport-guarantee>
+        </user-data-constraint>
+    </security-constraint>
+    
+    <!-- Este servlet esta sendo mapeado via anotacoes --><!--
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>Baile Secreto</web-resource-name>
+            <url-pattern>/secreto/*</url-pattern>
+            <http-method>GET</http-method>
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>amigo</role-name>
+            <role-name>administrador</role-name>
+        </auth-constraint>
+        <user-data-constraint>
+            <transport-guarantee>CONFIDENTIAL</transport-guarantee>
+        </user-data-constraint>
+    </security-constraint> -->
+    
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>Biblioteca</web-resource-name>
+            <url-pattern>/faces/biblioteca.xhtml</url-pattern>
+            <http-method>GET</http-method>
+            <http-method>POST</http-method>
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>administrador</role-name>
+            <role-name>especial</role-name>
+            <role-name>amigo</role-name>
+            <role-name>outro</role-name>
+        </auth-constraint>
+        <user-data-constraint>
+            <transport-guarantee>CONFIDENTIAL</transport-guarantee>
+        </user-data-constraint>
+    </security-constraint>
+    
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>Jardins do Castelo</web-resource-name>
+            <url-pattern>/faces/comum.xhtml</url-pattern>
+            <http-method>GET</http-method>
+        </web-resource-collection>
+        <user-data-constraint>
+            <transport-guarantee>CONFIDENTIAL</transport-guarantee>
+        </user-data-constraint>
+    </security-constraint>
+    
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>Dados de Login</web-resource-name>
+            <url-pattern>/faces/userData.xhtml</url-pattern>
+        </web-resource-collection>
+    </security-constraint>
+</web-app>

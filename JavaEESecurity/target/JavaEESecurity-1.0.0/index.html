@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Castelo de Java</title>
+        <meta charset="UTF-8"/>
+        <script src="js/jquery.min.js"></script>
+        <style>
+            * {font-family: "helvetica neue"}
+            .userlinks {margin-bottom: 100px;}
+            .userlinks div {float: left; padding: 5px}
+            .placeslinks {margin-bottom: 50px;}
+            .placeslinks img {float: left; margin: 0 10px 5px}
+            #cover {width: 100%}
+            #cover img {
+                max-width:100%;
+                max-height:100%;
+            }
+            h1 {text-align: center}
+            code {font-family: menlo; font-weight: bold}
+            .contents {width: 75%; position: relative; left: 20%; right: 50%}
+        </style>
+        <script>
+            $(document).ready(function () {
+                $.ajax({
+                    url: 'JDBCRealmSetup',
+                    error: function (data) {
+                        alert("Erro ao inicializar tabelas de usuários. Verifique a configuração.")
+                    }
+                });
+            });
+        </script>
+    </head>
+    <body>
+        <div id="cover"><img src="images/castelo.jpeg" /></div>
+        <h1>Castelo de Java</h1>
+        <div class="contents">
+            <h2>Lugares</h2>
+            <div class="placeslinks">
+                <div>
+                    <a href="faces/comum.xhtml"><img alt="jardim" src="images/jardim.png" width="100"/></a>
+                    <div>Jardins: <code>/faces/comum.xhtml</code><br/>Acesso livre.</div><br style="clear:both" />
+                </div>
+                <div><a href="secreto"><img alt="baile" src="images/baile.png" width="100"/></a>
+                    <div>Baile: <code>/secreto</code> (Servlet)<br/>
+                        Acesso para <b>amigos</b> e <b>administradores</b>.</div><br style="clear:both" />
+                </div>
+                <div><a href="faces/especial.xhtml"><img alt="jantar" src="images/jantar.png" width="100"/></a>
+                    <div>Jantar: <code>/faces/especial</code> (JSF)<br/>
+                        Acesso para convidados <b>especiais</b> e <b>administradores</b>.</div><br style="clear:both" />
+                </div>
+                <div><a href="faces/castelo.xhtml"><img alt="torre" src="images/torre.png" width="100"/></a>
+                    <div>Torre: <code>/faces/castelo</code> (JSF)<br/>
+                        Acesso somente para <b>administradores</b>
+                        <br/>Acesso a senhas (via WebSocket seguro).</div><br style="clear:both" />
+                </div>
+                <div><a href="faces/biblioteca.xhtml"><img alt="biblioteca" src="images/biblioteca.png" width="100"/></a>
+                    <div>Biblioteca: <code>/faces/biblioteca</code> (JSF)<br/>
+                        Acesso para cadastrados (faça login).</div><br style="clear:both" />
+                </div>
+            </div>
+
+            <h2>Pessoas</h2>
+
+            <div class="userlinks">
+                <div><a href="faces/profile.xhtml?userid=cerebro"><img alt="cerebro" src="images/cerebro.png" width="50"/></a></div>
+                <div><a href="faces/profile.xhtml?userid=kusko"><img alt="kusko" src="images/kusko.png" width="50"/></a></div>
+                <div><a href="faces/profile.xhtml?userid=marvin"><img alt="marvin" src="images/marvin.png" width="50"/></a></div>
+                <div><a href="faces/profile.xhtml?userid=masha"><img alt="masha" src="images/masha.png" width="50"/></a></div>
+                <div><a href="faces/profile.xhtml?userid=niquel"><img alt="niquel" src="images/niquel.png" width="50"/></a></div>
+                <div><a href="faces/profile.xhtml?userid=spock"><img alt="spock" src="images/spock.png" width="50"/></a></div>
+                <div><a href="faces/profile.xhtml?userid=vini"><img alt="vini" src="images/vini.png" width="50"/></a></div>
+            </div>
+            <p><a href="usuarios.html">Lista de usuários (REST)</a><br/>
+                Acesso para <b>administradores</b> ou <b>especiais</b>.</p>
+        </div>
+        <p><a href="JDBCRealmSetup">área desprotegida</a></p>
+    </body>
+</html>

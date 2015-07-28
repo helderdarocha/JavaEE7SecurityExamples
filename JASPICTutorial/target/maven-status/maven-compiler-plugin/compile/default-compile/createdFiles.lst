@@ -1,0 +1,15 @@
+br/com/argonavis/jaspictut/example/ProtectedBean.class
+br/com/argonavis/jaspictut/service/FacebookConnectService.class
+br/com/argonavis/jaspictut/example/ImageBean.class
+br/com/argonavis/jaspictut/service/AuthenticationException.class
+br/com/argonavis/jaspictut/service/AuthenticationServiceFactory.class
+br/com/argonavis/jaspictut/service/UserData.class
+br/com/argonavis/jaspictut/service/AuthenticationService.class
+br/com/argonavis/jaspictut/config/ServerAuthConfigImpl.class
+br/com/argonavis/jaspictut/example/UserDataServlet.class
+br/com/argonavis/jaspictut/config/AuthConfigProviderImpl.class
+br/com/argonavis/jaspictut/config/ServerAuthContextImpl.class
+br/com/argonavis/jaspictut/sam/ExampleServerAuthModule.class
+br/com/argonavis/jaspictut/config/AuthConfigListener.class
+br/com/argonavis/jaspictut/config/ClientAuthConfigImpl.class
+br/com/argonavis/jaspictut/service/GoogleSignInService.class

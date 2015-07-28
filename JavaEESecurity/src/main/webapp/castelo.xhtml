@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>Torre do castelo</title>
+        <style>
+            #wsresp {
+                border: solid black 1px;
+                height: 100px;
+                width: 300px;
+                margin: 20px 0;
+                background: black;
+                color: green;
+                font-size: 8pt;
+                font-family: courier;
+            }
+        </style>
+        <script src="js/jquery.min.js"></script>
+        <script src="js/castelo.js"></script>
+        <script>
+            $(document).ready(function () {
+                
+            });
+        </script>
+    </h:head>
+    <h:body>
+        <h1>Torre do Castelo: faces/castelo.xhtml</h1>
+        <p><b><h:outputText value="#{request.userPrincipal}" style="text-transform: capitalize" /></b>, seja bem-vindo à torre do Castelo</p>
+        <p>Apenas administradores podem entrar aqui!</p>
+
+        <h3>Obter o hash MD5 de uma senha (conexão WebSocket Segura)</h3>
+        <p>De quem?</p>
+        <select id="user">
+            <option>cerebro</option>
+            <option>kusko</option>
+            <option>marvin</option>
+            <option>masha</option>
+            <option>niquel</option>
+            <option>spock</option>
+            <option>vini</option>
+        </select>
+        <button onclick="sendWSMessage()">Enviar mensagem</button>
+        <div id="wsresp"></div>
+
+        <table border="1">
+            <tr><td>request.secure</td><th>#{request.secure}</th></tr>
+            <tr><td>request.authType</td><th>#{request.authType}</th></tr>
+            <tr><td>request.userPrincipal</td><th>#{request.userPrincipal}</th></tr>
+            <tr><td>request.remoteUser</td><th>#{request.remoteUser}</th></tr>
+            <tr><td>request.isUserInRole('administrador')</td><th>#{request.isUserInRole('administrador')}</th></tr>
+            <tr><td>request.isUserInRole('especial')</td><th>#{request.isUserInRole('especial')}</th></tr>
+            <tr><td>request.isUserInRole('amigo')</td><th>#{request.isUserInRole('amigo')}</th></tr>
+            <tr><td>request.isUserInRole('outro')</td><th>#{request.isUserInRole('outro')}</th></tr>
+        </table>
+
+    </h:body>
+</html>
+
